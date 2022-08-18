@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class CourseRepository {
@@ -51,25 +53,20 @@ public class CourseRepository {
 	}
 
 
-	public void addReviewsForCourse() {
-//		get the course 10003
-		Course course = findById(10003L);
+	public void addReviewsForCourse(Long courseId, List<Review> reviewList) {
+//		get the course with courseId
+		Course course = findById(courseId);
 		logger.info("course.getReviews() -> {}", course.getReviews());
-//		add 2 reviews to it
-		Review review1 = new Review("5", "Great haands-on stuff");
-		Review review2 = new Review("5", "hats off");
+
+
 
 //		setting the relationship
-//		course.addReview(review1);
-		review1.setCourse(course);
-
-//		course.addReview(review2);
-		review2.setCourse(course);
-
-
 //		save it to the database
-		em.persist(review1);
-		em.persist(review2);
+		for (Review review : reviewList) {
+//			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
 
+		}
 	}
 }

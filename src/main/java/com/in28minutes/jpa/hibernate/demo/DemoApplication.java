@@ -1,5 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo;
 
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -30,6 +34,11 @@ public class DemoApplication implements CommandLineRunner {
 //        studentRepository.saveStudentWithPassport();
         //repository.playWithEntityManager();
 
-        courseRepositoryr.addReviewsForCourse();
+        List<Review> reviewList = new ArrayList<>();
+        reviewList.add(new Review("5", "Great haands-on stuff"));
+        reviewList.add(new Review("5", "hats off"));
+        reviewList.add(new Review("5", "hey hey hey"));
+
+        courseRepositoryr.addReviewsForCourse(10003L, reviewList);
     }
 }
