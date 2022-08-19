@@ -34,12 +34,14 @@ public class DemoApplication implements CommandLineRunner {
 //        studentRepository.saveStudentWithPassport();
         //repository.playWithEntityManager();
 
-        List<Review> reviewList = new ArrayList<>();
-        reviewList.add(new Review("5", "Great haands-on stuff"));
-        reviewList.add(new Review("5", "hats off"));
-        reviewList.add(new Review("5", "hey hey hey"));
+//        List<Review> reviewList = new ArrayList<>();
+//        reviewList.add(new Review("5", "Great haands-on stuff"));
+//        reviewList.add(new Review("5", "hats off"));
+//        reviewList.add(new Review("5", "hey hey hey"));
+//
+//        courseRepository.addReviewsForCourse(10003L, reviewList);
+//        courseRepository.getReviews();
 
-        courseRepository.addReviewsForCourse(10003L, reviewList);
-        courseRepository.getReviews();
+        studentRepository.insertStudentAndCourse();
     }
 }

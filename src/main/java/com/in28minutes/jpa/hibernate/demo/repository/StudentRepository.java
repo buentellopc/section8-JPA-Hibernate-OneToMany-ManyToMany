@@ -1,5 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo.repository;
 
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.slf4j.Logger;
@@ -66,4 +67,26 @@ public class StudentRepository {
         passport.setNumber("123RealMadrid");
 //        Persistence Context (student++, passport++)
     }
+
+
+    public void insertStudentAndCourse(){
+//        Create students and courses
+        Student student = new Student("Cristiano Ronaldo");
+        Course course = new Course("Futbol 1");
+
+//        persist them separately
+        em.persist(student);
+        em.persist(course);
+
+//        establish the associating (fill its fields that determine the association)
+        student.addCourse(course);
+        course.addStudent(student);
+
+//        persist only the owning side
+        em.persist(student);
+
+    }
+
+
+
 }
