@@ -36,7 +36,6 @@ public class StudentRepositoryTest {
 //	Transaction
 
 
-
     @Test
     public void someTest() {
         repository.understandPersistenceContext();
@@ -52,12 +51,22 @@ public class StudentRepositoryTest {
 
     }
 
-//    @Transactional
+    @Transactional
     @Test
-    public void retrievePassportAndStudentDetails(){
+    public void retrievePassportAndStudentDetails() {
         Passport passport = em.find(Passport.class, 40002L);
         logger.info("passport -> {}", passport);
         logger.info("student retrieved using passport instance -> {}", passport.getStudent());
+    }
+
+
+    @Transactional
+    @Test
+    public void retrieveStudentAndCourses() {
+        Student student = repository.findById(20001L);
+        logger.info("student -> {}", student);
+        logger.info("student is enrolled in the following courses: {}", student.getCourses());
+
     }
 
 
