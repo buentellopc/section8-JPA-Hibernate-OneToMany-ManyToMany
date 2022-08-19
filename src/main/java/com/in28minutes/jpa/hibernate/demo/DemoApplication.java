@@ -21,7 +21,7 @@ public class DemoApplication implements CommandLineRunner {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private CourseRepository courseRepositoryr;
+    private CourseRepository courseRepository;
     @Autowired
     private StudentRepository studentRepository;
 
@@ -39,6 +39,7 @@ public class DemoApplication implements CommandLineRunner {
         reviewList.add(new Review("5", "hats off"));
         reviewList.add(new Review("5", "hey hey hey"));
 
-        courseRepositoryr.addReviewsForCourse(10003L, reviewList);
+        courseRepository.addReviewsForCourse(10003L, reviewList);
+        courseRepository.getReviews();
     }
 }
