@@ -1,6 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -13,6 +15,9 @@ public class Student {
 	private String name;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Passport passport;
+
+	@ManyToMany
+	private List<Course> courses =new ArrayList<>();
 
 	protected Student() {
 	}
@@ -39,6 +44,14 @@ public class Student {
 
 	public void setPassport(Passport passport) {
 		this.passport = passport;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void addCourse(Course course) {
+		this.courses.add(course);
 	}
 
 	@Override
