@@ -62,18 +62,14 @@ public class CourseRepository {
 //		setting the relationship
 //		save it to the database
         for (Review review : reviewList) {
-//			course.addReview(review);
+			course.addReview(review);
             review.setCourse(course);
 //			Think of the following line as if the review were sent to the persistence context just to wait for be
 //			saved into the database
             em.persist(review);
 
         }
-        em.flush();
-        em.detach(course);
-
-        Course course_updated = findById(courseId);
-        logger.info("new reviews {}", course_updated.getReviews());
+        logger.info("new reviews {}", course.getReviews());
     }
 
 
