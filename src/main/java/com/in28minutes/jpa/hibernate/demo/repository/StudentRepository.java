@@ -69,21 +69,14 @@ public class StudentRepository {
     }
 
 
-    public void insertStudentAndCourse(){
-//        Create students and courses
-        Student student = new Student("Cristiano Ronaldo");
-        Course course = new Course("Futbol 1");
-
-//        persist them separately
-        em.persist(student);
-        em.persist(course);
-
+    public void insertStudentAndCourse(Student student, Course course){
 //        establish the associating (fill its fields that determine the association)
         student.addCourse(course);
         course.addStudent(student);
 
-//        persist only the owning side
+//        persist both sides to generate proper ids
         em.persist(student);
+        em.persist(course);
 
     }
 

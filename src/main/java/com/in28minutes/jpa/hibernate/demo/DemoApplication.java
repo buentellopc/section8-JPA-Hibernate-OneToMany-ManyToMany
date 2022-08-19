@@ -1,6 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Review;
+import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,7 @@ public class DemoApplication implements CommandLineRunner {
 //        courseRepository.addReviewsForCourse(10003L, reviewList);
 //        courseRepository.getReviews();
 
-        studentRepository.insertStudentAndCourse();
+        studentRepository.insertStudentAndCourse(new Student("Cristiano Ronaldo"), new Course("Futbol 1"));
+
     }
 }
